@@ -2,8 +2,8 @@ extends Control
 
 @onready var label: Label = $Label
 @onready var timer: Timer = $Timer
-
 @onready var car = $"../Car"
+@onready var time = $"../Time"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +26,7 @@ func _process(_delta: float) -> void:
 	if timer.time_left < 1:
 		text = "GO!"
 		car.controls_enabled = true
+		time.start_time()
 
 	label.visible = true
 	label.text = text

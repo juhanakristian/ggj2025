@@ -229,9 +229,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_re8cc")
 
 [node name="Car" type="RigidBody3D"]
-collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_6vf44")
-gravity_scale = 6.048
+gravity_scale = 4.0
 angular_damp = 6.234
 script = ExtResource("1_ms60d")
 acceleration = 45.0
@@ -282,3 +281,4 @@ skeleton = NodePath("")
 
 [node name="RayCast3D" type="RayCast3D" parent="CarMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.117354, 0)
+target_position = Vector3(0, -2, 0)

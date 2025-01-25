@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://funx8u4segcp"]
+[gd_scene load_steps=10 format=3 uid="uid://funx8u4segcp"]
 
 [ext_resource type="Script" path="res://scenes/game/scripts/game.gd" id="1_xhe04"]
 [ext_resource type="Resource" uid="uid://bvqok07okh580" path="res://scenes/game/game_data.tres" id="2_2bjbc"]
-[ext_resource type="Script" path="res://addons/flcam/free_look_camera.gd" id="3_df452"]
+[ext_resource type="PackedScene" uid="uid://qv6kfqkm3rw5" path="res://scenes/player/player.tscn" id="3_45ko1"]
+[ext_resource type="Script" path="res://scenes/player/scripts/camera.gd" id="3_aweo2"]
+[ext_resource type="PackedScene" uid="uid://c8gsnr45ptcrc" path="res://scenes/ui/countdown.tscn" id="4_h0ss0"]
+[ext_resource type="PackedScene" uid="uid://bf17dlolwap5j" path="res://scenes/ui/time.tscn" id="5_xqntl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_weoso"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,10 +24,6 @@ glow_enabled = true
 script = ExtResource("1_xhe04")
 game_data = ExtResource("2_2bjbc")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.23871, 2.97037)
-script = ExtResource("3_df452")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 light_energy = 0.03
@@ -32,3 +31,14 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_uehq5")
+
+[node name="Car" parent="." instance=ExtResource("3_45ko1")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 5.37477, 9.05594)
+visible = false
+script = ExtResource("3_aweo2")
+
+[node name="Countdown" parent="." instance=ExtResource("4_h0ss0")]
+
+[node name="Time" parent="." instance=ExtResource("5_xqntl")]
