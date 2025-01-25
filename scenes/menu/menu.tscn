@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2mxhf13sx1tg"]
+[gd_scene load_steps=10 format=3 uid="uid://c2mxhf13sx1tg"]
 
 [ext_resource type="Script" path="res://scenes/menu/scripts/menu.gd" id="1_qplbd"]
 [ext_resource type="Resource" uid="uid://bvqok07okh580" path="res://scenes/game/game_data.tres" id="2_yu8lw"]
 [ext_resource type="PackedScene" uid="uid://6knwtjkva56v" path="res://scenes/tracks/main_track/assets/terrain_0_v_0.tscn" id="3_7fn6t"]
+[ext_resource type="Texture2D" uid="uid://58hwhqqxg8tg" path="res://scenes/menu/assets/ui_logo_text.png" id="3_af10x"]
+[ext_resource type="FontFile" uid="uid://dt2eeshqeioa7" path="res://scenes/menu/assets/DBack2.otf" id="4_2yqix"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wjmkp"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,6 +17,18 @@ sky_material = SubResource("ProceduralSkyMaterial_wjmkp")
 background_mode = 2
 sky = SubResource("Sky_2j2n2")
 tonemap_mode = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51p18"]
+bg_color = Color(0.784314, 0.215686, 0.215686, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.670588, 0.643137, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Menu" type="Node3D"]
 script = ExtResource("1_qplbd")
@@ -43,6 +57,7 @@ offset_right = 128.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_51p18")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UILayer/Panel"]
 layout_mode = 1
@@ -52,21 +67,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TittleLabel" type="Label" parent="UILayer/Panel/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UILayer/Panel/VBoxContainer"]
 layout_mode = 2
-text = "Bubble-Sport "
-horizontal_alignment = 1
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("3_af10x")
+expand_mode = 5
 
-[node name="Spacer" type="Control" parent="UILayer/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
+[node name="MarginContainer" type="MarginContainer" parent="UILayer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_right = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="StartGameButton" type="Button" parent="UILayer/Panel/VBoxContainer"]
+[node name="StartGameButton" type="Button" parent="UILayer/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Start"
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 0.670588, 0.643137, 1)
+theme_override_fonts/font = ExtResource("4_2yqix")
+theme_override_font_sizes/font_size = 28
+text = "Start Game"
 
-[node name="QuitGameButton" type="Button" parent="UILayer/Panel/VBoxContainer"]
+[node name="QuitGameButton" type="Button" parent="UILayer/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.886262, 0.886261, 0.886262, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 0.670588, 0.643137, 1)
+theme_override_fonts/font = ExtResource("4_2yqix")
+theme_override_font_sizes/font_size = 28
 text = "Quit"
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -75,5 +105,5 @@ transform = Transform3D(0.64074, 0.149769, -0.753009, -8.88178e-16, 0.980789, 0.
 [node name="terrain_0_v0" parent="." instance=ExtResource("3_7fn6t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6268, -8.57155, 46.5844)
 
-[connection signal="pressed" from="UILayer/Panel/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="UILayer/Panel/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="pressed" from="UILayer/Panel/VBoxContainer/MarginContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="UILayer/Panel/VBoxContainer/MarginContainer/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
