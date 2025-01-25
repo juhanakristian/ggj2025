@@ -43,6 +43,9 @@ shadow_mesh = SubResource("ArrayMesh_7ph7n")
 
 [node name="terrain_0_v0" instance=ExtResource("1_lr60f")]
 
+[node name="CollisionShape3D" parent="@StaticBody3D@131898" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.637253, 0.725864, -0.215683)
+
 [node name="Terrain01_RockBg2" type="MeshInstance3D" parent="." index="7"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 138.536, 0, -144.458)
 mesh = SubResource("ArrayMesh_000y5")

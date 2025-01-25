@@ -239,6 +239,7 @@ acceleration = 45.0
 shape = SubResource("SphereShape3D_xqsyw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+visible = false
 mesh = SubResource("SphereMesh_l5k3u")
 skeleton = NodePath("../..")
 
