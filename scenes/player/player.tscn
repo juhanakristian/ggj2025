@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=4 uid="uid://qv6kfqkm3rw5"]
+[gd_scene load_steps=21 format=4 uid="uid://qv6kfqkm3rw5"]
 
 [ext_resource type="Script" path="res://scenes/player/scripts/car.gd" id="1_ms60d"]
 [ext_resource type="Texture2D" uid="uid://d0haqiadn0hnk" path="res://scenes/player/assets/colormap.png" id="2_gm14f"]
+[ext_resource type="Texture2D" uid="uid://bgr6vwoixefw0" path="res://scenes/player/assets/texture_09.png" id="2_klib1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6vf44"]
 bounce = 0.1
@@ -9,7 +10,11 @@ bounce = 0.1
 [sub_resource type="SphereShape3D" id="SphereShape3D_xqsyw"]
 radius = 1.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxf4f"]
+albedo_texture = ExtResource("2_klib1")
+
 [sub_resource type="SphereMesh" id="SphereMesh_l5k3u"]
+material = SubResource("StandardMaterial3D_rxf4f")
 radius = 1.0
 height = 2.0
 
@@ -229,6 +234,7 @@ physics_material_override = SubResource("PhysicsMaterial_6vf44")
 gravity_scale = 6.048
 angular_damp = 6.234
 script = ExtResource("1_ms60d")
+acceleration = 45.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_xqsyw")
