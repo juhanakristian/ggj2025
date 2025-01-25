@@ -29,11 +29,11 @@ size = Vector2(50, 50)
 [sub_resource type="BoxShape3D" id="BoxShape3D_cvbi4"]
 size = Vector3(50, 0.5, 50)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pj28r"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kb2bd"]
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_jugg0"]
-material = SubResource("StandardMaterial3D_pj28r")
+material = SubResource("StandardMaterial3D_kb2bd")
 size = Vector3(4, 2, 8)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_md76x"]
