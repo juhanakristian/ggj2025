@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://funx8u4segcp"]
+
+[ext_resource type="Script" path="res://scenes/game/scripts/game.gd" id="1_xhe04"]
+[ext_resource type="Resource" uid="uid://bvqok07okh580" path="res://scenes/game/game_data.tres" id="2_2bjbc"]
+[ext_resource type="Script" path="res://addons/flcam/free_look_camera.gd" id="3_df452"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_weoso"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ywhh3"]
+sky_material = SubResource("ProceduralSkyMaterial_weoso")
+
+[sub_resource type="Environment" id="Environment_uehq5"]
+background_mode = 2
+sky = SubResource("Sky_ywhh3")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Game" type="Node"]
+script = ExtResource("1_xhe04")
+game_data = ExtResource("2_2bjbc")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.23871, 2.97037)
+script = ExtResource("3_df452")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uehq5")
