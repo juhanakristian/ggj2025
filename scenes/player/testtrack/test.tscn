@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciljhihmmcf03"]
+[gd_scene load_steps=7 format=3 uid="uid://ciljhihmmcf03"]
 
+[ext_resource type="Script" path="res://addons/flcam/free_look_camera.gd" id="1_jy0m0"]
 [ext_resource type="PackedScene" uid="uid://qv6kfqkm3rw5" path="res://scenes/player/player.tscn" id="1_tuvqq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0hocd"]
@@ -29,5 +30,8 @@ material = SubResource("StandardMaterial3D_avrfj")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.863369, 0.504573, 0, -0.504573, 0.863369, 0, 5.39862, 7.79325)
+script = ExtResource("1_jy0m0")
 
 [node name="Car2" parent="." instance=ExtResource("1_tuvqq")]
+
+[editable path="Car2"]
