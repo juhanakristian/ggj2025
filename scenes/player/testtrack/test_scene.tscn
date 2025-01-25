@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://475pcxnrjtxc"]
+[gd_scene load_steps=14 format=3 uid="uid://475pcxnrjtxc"]
 
 [ext_resource type="PackedScene" uid="uid://qv6kfqkm3rw5" path="res://scenes/player/player.tscn" id="1_sdce0"]
 [ext_resource type="Script" path="res://scenes/player/scripts/camera.gd" id="2_4318c"]
 [ext_resource type="PackedScene" uid="uid://c8gsnr45ptcrc" path="res://scenes/ui/countdown.tscn" id="3_rtfrm"]
+[ext_resource type="PackedScene" uid="uid://bf17dlolwap5j" path="res://scenes/ui/time.tscn" id="4_cs5dn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_74a4f"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -69,5 +70,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7.1965)
 script = ExtResource("2_4318c")
 
 [node name="Car" parent="." instance=ExtResource("1_sdce0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.780362, 0)
 
 [node name="Countdown" parent="." instance=ExtResource("3_rtfrm")]
+
+[node name="Time" parent="." instance=ExtResource("4_cs5dn")]
