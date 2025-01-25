@@ -1,16 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://ciljhihmmcf03"]
+[gd_scene load_steps=6 format=3 uid="uid://ciljhihmmcf03"]
 
-[ext_resource type="PackedScene" uid="uid://qv6kfqkm3rw5" path="res://scenes/player/player.tscn" id="1_o7bet"]
+[ext_resource type="PackedScene" uid="uid://qv6kfqkm3rw5" path="res://scenes/player/player.tscn" id="1_tuvqq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0hocd"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_vxdfi"]
+sky_material = SubResource("ProceduralSkyMaterial_0hocd")
+
+[sub_resource type="Environment" id="Environment_qrecq"]
+background_mode = 2
+sky = SubResource("Sky_vxdfi")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avrfj"]
 
 [node name="Test" type="Node3D"]
 
-[node name="Car" parent="." instance=ExtResource("1_o7bet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7595, 0)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qrecq")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66382, 0, 4.00386)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66382, -2.53046, 4.00386)
 use_collision = true
 size = Vector3(67.627, 1, 74.0508)
+material = SubResource("StandardMaterial3D_avrfj")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.863369, 0.504573, 0, -0.504573, 0.863369, 0, 5.39862, 7.79325)
+
+[node name="Car2" parent="." instance=ExtResource("1_tuvqq")]
