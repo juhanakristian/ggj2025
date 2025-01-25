@@ -19,9 +19,11 @@ var controls_enabled = false
 
 
 func _physics_process(_delta: float) -> void:
+	car_mesh.position = position + sphere_offset
+
 	if not controls_enabled:
 		return
-	car_mesh.position = position + sphere_offset
+
 	if ground_ray.is_colliding():
 		apply_central_force(-car_mesh.global_transform.basis.z * speed_input)
 
@@ -29,6 +31,7 @@ func _physics_process(_delta: float) -> void:
 func _process(delta):
 	if not controls_enabled:
 		return
+
 	if not ground_ray.is_colliding():
 		return
 
