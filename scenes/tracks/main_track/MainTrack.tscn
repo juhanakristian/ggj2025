@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2wvditplnqb0"]
+[gd_scene load_steps=11 format=3 uid="uid://c2wvditplnqb0"]
 
 [ext_resource type="Script" path="res://scenes/game/scripts/track_scene.gd" id="1_thb51"]
 [ext_resource type="PackedScene" uid="uid://6knwtjkva56v" path="res://scenes/tracks/main_track/assets/terrain_0_v_0.tscn" id="2_r0tik"]
+[ext_resource type="Script" path="res://scenes/tracks/main_track/checkpoints.gd" id="3_w0k1f"]
+[ext_resource type="Script" path="res://scenes/tracks/main_track/checkpoint.gd" id="4_xf07u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pj28r"]
 uv1_triplanar = true
@@ -12,6 +14,12 @@ size = Vector3(4, 2, 8)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4oq6x"]
 data = PackedVector3Array(-2, 1, 4, 2, 1, 4, -2, -1, 4, 2, 1, 4, 2, -1, 4, -2, -1, 4, 2, 1, -4, -2, 1, -4, 2, -1, -4, -2, 1, -4, -2, -1, -4, 2, -1, -4, 2, 1, 4, 2, 1, -4, 2, -1, 4, 2, 1, -4, 2, -1, -4, 2, -1, 4, -2, 1, -4, -2, 1, 4, -2, -1, -4, -2, 1, 4, -2, -1, 4, -2, -1, -4, 2, 1, 4, -2, 1, 4, 2, 1, -4, -2, 1, 4, -2, 1, -4, 2, 1, -4, -2, -1, 4, 2, -1, 4, -2, -1, -4, 2, -1, 4, 2, -1, -4, -2, -1, -4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b0nxg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0igbm"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_uybe4"]
 
 [node name="MainTrack" type="Node3D"]
 script = ExtResource("1_thb51")
@@ -27,3 +35,69 @@ mesh = SubResource("BoxMesh_at70e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4oq6x")
+
+[node name="Checkpoints" type="Node3D" parent="."]
+script = ExtResource("3_w0k1f")
+
+[node name="Checkpoint1" type="Node3D" parent="Checkpoints"]
+transform = Transform3D(50, 0, 0, 0, 2, 0, 0, 0, 1, 1.00345, -0.980725, -17.1495)
+script = ExtResource("4_xf07u")
+checkpoint_id = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoints/Checkpoint1"]
+visible = false
+mesh = SubResource("BoxMesh_b0nxg")
+
+[node name="Area3D" type="Area3D" parent="Checkpoints/Checkpoint1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint1/Area3D"]
+shape = SubResource("BoxShape3D_0igbm")
+
+[node name="Checkpoint2" type="Node3D" parent="Checkpoints"]
+transform = Transform3D(-25.5468, 0, 0.904827, 0, 2, 0, -54.2896, 0, -0.425779, -64.5032, -0.94323, -41.6654)
+script = ExtResource("4_xf07u")
+checkpoint_id = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoints/Checkpoint2"]
+visible = false
+mesh = SubResource("BoxMesh_b0nxg")
+
+[node name="Area3D" type="Area3D" parent="Checkpoints/Checkpoint2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint2/Area3D"]
+shape = SubResource("BoxShape3D_0igbm")
+
+[node name="Checkpoint3" type="Node3D" parent="Checkpoints"]
+transform = Transform3D(13.446, 0, 0.963163, 0, 2, 0, -48.1581, 0, 0.26892, -65.5301, -0.496891, 35.205)
+script = ExtResource("4_xf07u")
+checkpoint_id = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoints/Checkpoint3"]
+visible = false
+mesh = SubResource("BoxMesh_b0nxg")
+
+[node name="Area3D" type="Area3D" parent="Checkpoints/Checkpoint3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint3/Area3D"]
+shape = SubResource("BoxShape3D_0igbm")
+
+[node name="Checkpoint4" type="Node3D" parent="Checkpoints"]
+transform = Transform3D(49.6057, 0, -0.125333, 0, 2, 0, 6.26666, 0, 0.992115, -3.22646, -0.496887, 3.48444)
+script = ExtResource("4_xf07u")
+checkpoint_id = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoints/Checkpoint4"]
+visible = false
+mesh = SubResource("BoxMesh_b0nxg")
+
+[node name="Area3D" type="Area3D" parent="Checkpoints/Checkpoint4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoints/Checkpoint4/Area3D"]
+shape = SubResource("BoxShape3D_0igbm")
+
+[node name="Start" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Start"]
+mesh = SubResource("PrismMesh_uybe4")
