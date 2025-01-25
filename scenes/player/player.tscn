@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://qv6kfqkm3rw5"]
+
+[ext_resource type="PackedScene" uid="uid://bs5i1jiybhqxn" path="res://scenes/player/suv.tscn" id="1_36q84"]
+[ext_resource type="Script" path="res://scenes/player/scripts/car.gd" id="1_ms60d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6vf44"]
+bounce = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xqsyw"]
+radius = 1.0
+
+[node name="Car" type="Node3D"]
+
+[node name="Ball" type="RigidBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_6vf44")
+gravity_scale = 10.0
+angular_damp = 5.0
+script = ExtResource("1_ms60d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ball"]
+shape = SubResource("SphereShape3D_xqsyw")
+
+[node name="suv" parent="Ball" instance=ExtResource("1_36q84")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.933255, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Ball/suv"]
