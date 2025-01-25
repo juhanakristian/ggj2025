@@ -226,8 +226,8 @@ shadow_mesh = SubResource("ArrayMesh_re8cc")
 [node name="Car" type="RigidBody3D"]
 collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_6vf44")
-gravity_scale = 3.0
-angular_damp = 5.0
+gravity_scale = 6.048
+angular_damp = 6.234
 script = ExtResource("1_ms60d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
