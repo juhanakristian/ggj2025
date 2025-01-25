@@ -1,11 +1,19 @@
 extends RigidBody3D
 
+signal checkpoint_entered(checkpoint_id: int)
+signal lap_completed()
+
+signal toggle_controls(enabled: bool)
+
+var checkpoint_id = 0
+var next_checkpoint = 1
+var total_checkpoints = 4
+
 @onready var car_mesh = $CarMesh
 @onready var body_mesh = $CarMesh/suv
 @onready var ground_ray = $CarMesh/RayCast3D
 @onready var right_wheel = $CarMesh/suv/wheel_right
 @onready var left_wheel = $CarMesh/suv/wheel_left
-
 
 @export var sphere_offset = Vector3.DOWN
 @export var acceleration = 35.0
@@ -17,6 +25,9 @@ extends RigidBody3D
 var body_tilt = 35
 var controls_enabled = false
 
+func _ready() -> void:
+	connect("checkpoint_entered", Callable(self, "_on_checkpoint_entered"))
+	connect("toggle_controls", Callable(self, "_on_toggle_controls"))
 
 func _physics_process(_delta: float) -> void:
 	car_mesh.position = position + sphere_offset
@@ -26,7 +37,6 @@ func _physics_process(_delta: float) -> void:
 
 	if ground_ray.is_colliding():
 		apply_central_force(-car_mesh.global_transform.basis.z * speed_input)
-
 
 func _process(delta):
 	if not controls_enabled:
@@ -59,3 +69,16 @@ func align_with_y(xform, new_y):
 	xform.basis.x = -xform.basis.z.cross(new_y)
 	xform.basis = xform.basis.orthonormalized()
 	return xform.orthonormalized()
+
+func _on_checkpoint_entered(checkpoint_id: int) -> void:
+	print("Checkpoint entered: %d" % checkpoint_id)
+	if checkpoint_id == next_checkpoint:
+		next_checkpoint += 1
+		print("Next checkpoint: %d" % next_checkpoint)
+
+		if next_checkpoint > total_checkpoints:
+			next_checkpoint = 1
+			emit_signal("lap_completed")
+
+func _on_toggle_controls(enabled: bool) -> void:
+	controls_enabled = enabled

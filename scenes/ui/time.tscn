@@ -18,4 +18,32 @@ script = ExtResource("1_l2d3r")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+text = "00:00"
+label_settings = SubResource("LabelSettings_2eh7j")
+
+[node name="Lap1Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 46.0
+offset_right = 41.0
+offset_bottom = 91.0
+text = "Lap 1"
+label_settings = SubResource("LabelSettings_2eh7j")
+
+[node name="Lap2Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 98.0
+offset_right = 41.0
+offset_bottom = 143.0
+text = "Lap 2"
+label_settings = SubResource("LabelSettings_2eh7j")
+
+[node name="Lap3Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 146.0
+offset_right = 42.0
+offset_bottom = 191.0
+text = "Lap 3"
 label_settings = SubResource("LabelSettings_2eh7j")
