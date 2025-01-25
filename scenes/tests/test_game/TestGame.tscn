@@ -1,14 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bq4tbkv1w28fc"]
+[gd_scene load_steps=2 format=3 uid="uid://bq4tbkv1w28fc"]
 
 [ext_resource type="PackedScene" uid="uid://funx8u4segcp" path="res://scenes/game/game.tscn" id="1_gxs6b"]
-[ext_resource type="Script" path="res://scenes/game/scripts/game_data.gd" id="2_h2x8n"]
-[ext_resource type="Resource" uid="uid://brqym4a6arbi5" path="res://scenes/tracks/dbg_track/dbg_track.tres" id="3_qohd7"]
-
-[sub_resource type="Resource" id="Resource_yqk75"]
-script = ExtResource("2_h2x8n")
-track = ExtResource("3_qohd7")
 
 [node name="TestGame" type="Node"]
 
 [node name="Game" parent="." instance=ExtResource("1_gxs6b")]
-game_data = SubResource("Resource_yqk75")

@@ -1,11 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2mxhf13sx1tg"]
+[gd_scene load_steps=7 format=3 uid="uid://c2mxhf13sx1tg"]
 
 [ext_resource type="Script" path="res://scenes/menu/scripts/menu.gd" id="1_qplbd"]
 [ext_resource type="Resource" uid="uid://bvqok07okh580" path="res://scenes/game/game_data.tres" id="2_yu8lw"]
+[ext_resource type="PackedScene" uid="uid://6knwtjkva56v" path="res://scenes/tracks/main_track/assets/terrain_0_v_0.tscn" id="3_7fn6t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wjmkp"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_2j2n2"]
+sky_material = SubResource("ProceduralSkyMaterial_wjmkp")
+
+[sub_resource type="Environment" id="Environment_rcl2b"]
+background_mode = 2
+sky = SubResource("Sky_2j2n2")
+tonemap_mode = 2
 
 [node name="Menu" type="Node3D"]
 script = ExtResource("1_qplbd")
 game_data = ExtResource("2_yu8lw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_energy = 0.0
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rcl2b")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -33,7 +54,7 @@ grow_vertical = 2
 
 [node name="TittleLabel" type="Label" parent="UILayer/Panel/VBoxContainer"]
 layout_mode = 2
-text = "Untitled Bubble Racing Game"
+text = "Bubble-Sport "
 horizontal_alignment = 1
 
 [node name="Spacer" type="Control" parent="UILayer/Panel/VBoxContainer"]
@@ -47,6 +68,12 @@ text = "Start"
 [node name="QuitGameButton" type="Button" parent="UILayer/Panel/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.64074, 0.149769, -0.753009, -8.88178e-16, 0.980789, 0.195073, 0.767758, -0.124991, 0.62843, -3.84502, -3.05141, 8.94944)
+
+[node name="terrain_0_v0" parent="." instance=ExtResource("3_7fn6t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6268, -8.57155, 46.5844)
 
 [connection signal="pressed" from="UILayer/Panel/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="UILayer/Panel/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]

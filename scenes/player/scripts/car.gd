@@ -15,15 +15,20 @@ extends RigidBody3D
 @export var speed_input = 0
 @export var turn_input = 0
 var body_tilt = 35
+var controls_enabled = false
 
 
 func _physics_process(_delta: float) -> void:
+	if not controls_enabled:
+		return
 	car_mesh.position = position + sphere_offset
 	if ground_ray.is_colliding():
 		apply_central_force(-car_mesh.global_transform.basis.z * speed_input)
 
 
 func _process(delta):
+	if not controls_enabled:
+		return
 	if not ground_ray.is_colliding():
 		return
 
