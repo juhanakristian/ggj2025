@@ -19,7 +19,6 @@ var body_tilt = 35
 
 func _physics_process(_delta: float) -> void:
 	car_mesh.position = position + sphere_offset
-	print(ground_ray.is_colliding())
 	if ground_ray.is_colliding():
 		apply_central_force(-car_mesh.global_transform.basis.z * speed_input)
 
@@ -34,12 +33,6 @@ func _process(delta):
 	# Turn the wheels
 	right_wheel.rotation.y = turn_input
 	left_wheel.rotation.y = turn_input
-
-
-	# if linear_velocity.length() > turn_stop_limit:
-	# 	var new_basis = car_mesh.global_transform.basis.rotated(car_mesh.global_transform.basis.y, turn_input)
-	# 	car_mesh.global_transform.basis = car_mesh.global_transform.basis.slerp(new_basis, turn_speed * delta)
-	# 	car_mesh.global_transform = car_mesh.global_transform.basis.orthonormalized()
 
 	if linear_velocity.length() > turn_stop_limit:
 		var new_basis = car_mesh.global_transform.basis.rotated(car_mesh.global_transform.basis.y, turn_input)
@@ -56,5 +49,5 @@ func _process(delta):
 func align_with_y(xform, new_y):
 	xform.basis.y = new_y
 	xform.basis.x = -xform.basis.z.cross(new_y)
-#	xform.basis = xform.basis.orthonormalized()
+	xform.basis = xform.basis.orthonormalized()
 	return xform.orthonormalized()
