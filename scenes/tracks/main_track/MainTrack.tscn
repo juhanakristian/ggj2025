@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://c2wvditplnqb0"]
+[gd_scene load_steps=10 format=3 uid="uid://c2wvditplnqb0"]
 
 [ext_resource type="Script" path="res://scenes/game/scripts/track_scene.gd" id="1_thb51"]
 [ext_resource type="PackedScene" uid="uid://6knwtjkva56v" path="res://scenes/tracks/main_track/assets/terrain_0_v_0.tscn" id="2_r0tik"]
-[ext_resource type="Script" path="res://scenes/tracks/main_track/checkpoints.gd" id="3_w0k1f"]
 [ext_resource type="Script" path="res://scenes/tracks/main_track/checkpoint.gd" id="4_xf07u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pj28r"]
@@ -37,7 +36,6 @@ mesh = SubResource("BoxMesh_at70e")
 shape = SubResource("ConcavePolygonShape3D_4oq6x")
 
 [node name="Checkpoints" type="Node3D" parent="."]
-script = ExtResource("3_w0k1f")
 
 [node name="Checkpoint1" type="Node3D" parent="Checkpoints"]
 transform = Transform3D(50, 0, 0, 0, 2, 0, 0, 0, 1, 1.00345, -0.980725, -17.1495)
