@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b43l1c2g1pfx3"]
+
+[ext_resource type="Script" path="res://scenes/game/scripts/track_scene.gd" id="1_psb11"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wl286"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_56jkv"]
+
+[node name="DbgTrack" type="Node3D"]
+script = ExtResource("1_psb11")
+
+[node name="DBGPlatform" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94409, -0.243408, -0.274445)
+use_collision = true
+size = Vector3(9.94678, 0.513184, 10.6697)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53279, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744536, 0)
+shape = SubResource("BoxShape3D_wl286")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.661072, 0)
+mesh = SubResource("BoxMesh_56jkv")

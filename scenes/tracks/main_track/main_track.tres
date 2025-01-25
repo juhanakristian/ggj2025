@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Track" load_steps=3 format=3 uid="uid://bjj1oj8ouo5eo"]
+
+[ext_resource type="Script" path="res://scenes/game/scripts/track.gd" id="1_ak0et"]
+[ext_resource type="PackedScene" uid="uid://c2wvditplnqb0" path="res://scenes/tracks/main_track/MainTrack.tscn" id="2_aofyb"]
+
+[resource]
+script = ExtResource("1_ak0et")
+name = "Main track"
+track_scene = ExtResource("2_aofyb")

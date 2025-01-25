@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GameData" load_steps=3 format=3 uid="uid://bvqok07okh580"]
+
+[ext_resource type="Script" path="res://scenes/game/scripts/game_data.gd" id="1_hckos"]
+[ext_resource type="Resource" uid="uid://bjj1oj8ouo5eo" path="res://scenes/tracks/main_track/main_track.tres" id="2_72gd1"]
+
+[resource]
+script = ExtResource("1_hckos")
+track = ExtResource("2_72gd1")
