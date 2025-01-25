@@ -1,22 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2mxhf13sx1tg"]
+[gd_scene load_steps=14 format=3 uid="uid://c2mxhf13sx1tg"]
 
 [ext_resource type="Script" path="res://scenes/menu/scripts/menu.gd" id="1_qplbd"]
 [ext_resource type="Resource" uid="uid://bvqok07okh580" path="res://scenes/game/game_data.tres" id="2_yu8lw"]
-[ext_resource type="PackedScene" uid="uid://6knwtjkva56v" path="res://scenes/tracks/main_track/assets/terrain_0_v_0.tscn" id="3_7fn6t"]
 [ext_resource type="Texture2D" uid="uid://58hwhqqxg8tg" path="res://scenes/menu/assets/ui_logo_text.png" id="3_af10x"]
+[ext_resource type="Environment" uid="uid://7i3x37pbymcv" path="res://scenes/menu/environment/menu_environment.tres" id="3_caveg"]
 [ext_resource type="FontFile" uid="uid://dt2eeshqeioa7" path="res://scenes/menu/assets/DBack2.otf" id="4_2yqix"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wjmkp"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_2j2n2"]
-sky_material = SubResource("ProceduralSkyMaterial_wjmkp")
-
-[sub_resource type="Environment" id="Environment_rcl2b"]
-background_mode = 2
-sky = SubResource("Sky_2j2n2")
-tonemap_mode = 2
+[ext_resource type="PackedScene" uid="uid://bj40uvov2xk51" path="res://scenes/menu/assets/menu_terrain.glb" id="5_w35kd"]
+[ext_resource type="PackedScene" uid="uid://bn6m3iaq4frlv" path="res://scenes/tracks/assets/env_assets/coral.tscn" id="6_5rogb"]
+[ext_resource type="PackedScene" uid="uid://b8r2bx6642lh2" path="res://scenes/tracks/assets/env_assets/goal.tscn" id="7_r8oxm"]
+[ext_resource type="PackedScene" uid="uid://dkrgb85n0lktm" path="res://scenes/tracks/assets/env_assets/seaweed_a.tscn" id="8_d8m6i"]
+[ext_resource type="PackedScene" uid="uid://cwp7ursbtkasi" path="res://scenes/tracks/assets/env_assets/seaweed_b.tscn" id="9_anyjp"]
+[ext_resource type="PackedScene" uid="uid://b20bhq1nphftx" path="res://scenes/tracks/assets/env_assets/seaweed_c.tscn" id="10_oayxt"]
+[ext_resource type="PackedScene" uid="uid://btbwit1waa23o" path="res://scenes/assets/stopwatch/stopwatch.tscn" id="12_gt4cr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51p18"]
 bg_color = Color(0.784314, 0.215686, 0.215686, 1)
@@ -36,11 +31,11 @@ game_data = ExtResource("2_yu8lw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-light_energy = 0.0
+light_energy = 0.395
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_rcl2b")
+environment = ExtResource("3_caveg")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 
@@ -100,10 +95,52 @@ theme_override_font_sizes/font_size = 28
 text = "Quit"
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.64074, 0.149769, -0.753009, -8.88178e-16, 0.980789, 0.195073, 0.767758, -0.124991, 0.62843, -3.84502, -3.05141, 8.94944)
+transform = Transform3D(1, 0, 0, 0, 0.926811, 0.375529, 0, -0.375529, 0.926811, -3.81467, 1.52075, -5.96432)
 
-[node name="terrain_0_v0" parent="." instance=ExtResource("3_7fn6t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6268, -8.57155, 46.5844)
+[node name="menu_terrain" parent="." instance=ExtResource("5_w35kd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1202, 0, 3.06838)
+
+[node name="coral" parent="." instance=ExtResource("6_5rogb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.97842, 0, -4.64085)
+
+[node name="Goal" parent="." instance=ExtResource("7_r8oxm")]
+transform = Transform3D(0.749664, -0.205965, 0.628953, 0.157788, 0.978559, 0.132381, -0.642734, 0, 0.766089, -18.1369, -0.592098, -15.2911)
+
+[node name="SeaweedA" parent="." instance=ExtResource("8_d8m6i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.65434, 0, -13.98)
+
+[node name="SeaweedB" parent="." instance=ExtResource("9_anyjp")]
+transform = Transform3D(2.36301, 0, -2.04495, 0, 3.125, 0, 2.04495, 0, 2.36301, 8.69024, 0, -17.6798)
+
+[node name="SeaweedB3" parent="." instance=ExtResource("9_anyjp")]
+transform = Transform3D(2.71628, 0, -1.54513, 0, 3.125, 0, 1.54513, 0, 2.71628, 11.7648, 0, -15.3664)
+
+[node name="SeaweedB4" parent="." instance=ExtResource("9_anyjp")]
+transform = Transform3D(2.71628, 0, -1.54513, 0, 3.125, 0, 1.54513, 0, 2.71628, 11.7648, 0, -19.0597)
+
+[node name="SeaweedB5" parent="." instance=ExtResource("9_anyjp")]
+transform = Transform3D(2.71628, 0, -1.54513, 0, 3.125, 0, 1.54513, 0, 2.71628, 13.7839, 0, -19.0597)
+
+[node name="SeaweedB6" parent="." instance=ExtResource("9_anyjp")]
+transform = Transform3D(2.71628, 0, -1.54513, 0, 3.125, 0, 1.54513, 0, 2.71628, 10.2893, 0, -19.0597)
+
+[node name="SeaweedC" parent="." instance=ExtResource("10_oayxt")]
+transform = Transform3D(0.801202, 0, -0.598395, 0, 1, 0, 0.598395, 0, 0.801202, 8.07257, 0, -5.38968)
+
+[node name="coral2" parent="." instance=ExtResource("6_5rogb")]
+transform = Transform3D(3.11574, 0, 2.07778, 0, 3.745, 0, -2.07778, 0, 3.11574, -8.91551, -0.131846, -17.5335)
+
+[node name="SeaweedB2" parent="." instance=ExtResource("9_anyjp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45453, 1.79319, -21.1323)
+
+[node name="SeaweedC2" parent="." instance=ExtResource("10_oayxt")]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 7.10534, -0.123153, -21.2287)
+
+[node name="coral3" parent="." instance=ExtResource("6_5rogb")]
+transform = Transform3D(2.545, 0, 0, 0, 2.545, 0, 0, 0, 2.545, -2.67982, 0, -17.8125)
+
+[node name="stopwatch" parent="." instance=ExtResource("12_gt4cr")]
+transform = Transform3D(0.163283, -0.381853, -0.909685, 0.951107, 0.305952, 0.0422909, 0.262171, -0.872114, 0.41314, -13.0407, 0.440032, -16.3853)
 
 [connection signal="pressed" from="UILayer/Panel/VBoxContainer/MarginContainer/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="UILayer/Panel/VBoxContainer/MarginContainer/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]

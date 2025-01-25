@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://btbwit1waa23o"]
+
+[ext_resource type="PackedScene" uid="uid://4ycpbqsurdin" path="res://scenes/assets/stopwatch/stopwatch.glb" id="1_bdxo8"]
+
+[node name="stopwatch" instance=ExtResource("1_bdxo8")]
+
+[node name="kello_001" parent="." index="0"]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 1.72524, 0.0072825)
+
+[node name="viisuri_001" parent="." index="1"]
+transform = Transform3D(0, 2.47423, 0, -0.681308, 0, 0, 0, 0, 0.122015, 0.0728708, -0.00616631, 0.0072825)

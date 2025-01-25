@@ -2,20 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1uh7ptr86p35"
-path="res://.godot/imported/ui_patch.png-3f3219057601d1deb0b0de84d05e6e01.ctex"
+uid="uid://bq7o3qadyhtmj"
+path="res://.godot/imported/env_assets_v0_bubble.png-380568c12fa0b58a202e7e23f6375486.ctex"
 metadata={
 "vram_texture": false
+}
+generator_parameters={
+"md5": "60d94097b2967f52391384c9a459b2a9"
 }
 
 [deps]
 
-source_file="res://scenes/menu/assets/ui_patch.png"
-dest_files=["res://.godot/imported/ui_patch.png-3f3219057601d1deb0b0de84d05e6e01.ctex"]
+source_file="res://scenes/tracks/assets/env_assets/env_assets_v0_bubble.png"
+dest_files=["res://.godot/imported/env_assets_v0_bubble.png-380568c12fa0b58a202e7e23f6375486.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -31,4 +34,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

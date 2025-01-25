@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=4 uid="uid://drisxy7kpv0bl"]
+
+[ext_resource type="Texture2D" uid="uid://bq7o3qadyhtmj" path="res://scenes/tracks/assets/env_assets/env_assets_v0_bubble.png" id="1_13m3r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qa2br"]
+resource_name = "BubbleMaterial"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_13m3r")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pkxa8"]
+_surfaces = [{
+"aabb": AABB(-0.443111, 0, -1.83122e-07, 0.886222, 0.886222, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
+"name": "BubbleMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("cd/iPgAAAADxBxu0cd/ivgAAAADxBxs0cd/iPnHfYj8poES0cd/ivnHfYj9y3+Iz")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cuicd"]
+resource_name = "env_assets_v0_Plane_016"
+_surfaces = [{
+"aabb": AABB(-0.443111, 0, -1.83122e-07, 0.886222, 0.886222, 1e-05),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAA="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
+"material": SubResource("StandardMaterial3D_qa2br"),
+"name": "BubbleMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("cd/iPgAAAADxBxu0cd/ivgAAAADxBxs0cd/iPnHfYj8poES0cd/ivnHfYj9y3+Iz/////wAA/7//////AAD/v/////8AAP+//////wAA/78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_pkxa8")
+
+[node name="Bubble" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_cuicd")
+skeleton = NodePath("")

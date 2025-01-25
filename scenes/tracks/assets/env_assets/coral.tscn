@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=4 uid="uid://bn6m3iaq4frlv"]
+
+[ext_resource type="Texture2D" uid="uid://c6n08wdmive0o" path="res://scenes/tracks/assets/env_assets/env_assets_v0_coral.png" id="1_kwa41"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8uiv7"]
+resource_name = "CoralMaterial"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_kwa41")
+roughness = 0.5
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_b2aeg"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -2.06632e-07, 1, 1, 1e-05),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
+"name": "CoralMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAPwAAAABM7y60AAAAvwAAAABM7y40AAAAPwAAgD+Y3l20AAAAvwAAgD8AAAA0")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jynay"]
+resource_name = "env_assets_v0_Plane_009"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -2.06632e-07, 1, 1, 1e-05),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAIA/AACAPwAAAAAAAAAAAACAPwAAAAA="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
+"material": SubResource("StandardMaterial3D_8uiv7"),
+"name": "CoralMaterial",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAPwAAAABM7y60AAAAvwAAAABM7y40AAAAPwAAgD+Y3l20AAAAvwAAgD8AAAA0/////wAA/7//////AAD/v/////8AAP+//////wAA/78=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_b2aeg")
+
+[node name="coral" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_jynay")
+skeleton = NodePath("")
