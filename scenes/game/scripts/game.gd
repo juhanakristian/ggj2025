@@ -16,6 +16,10 @@ var track_loading_progress = [0.0]
 @export var game_data : GameData
 var state : GameState = GameState.INIT
 
+@export var car : Node
+@export var time_system : Node
+@export var countdown : Node
+
 ## Starts loading the track
 func load_track(track : Track):
 	# TODO: Release the track if already loaded
@@ -57,6 +61,8 @@ func process_track_loading():
 
 func _ready():
 	print("Game::_ready -> Starting load_track: %s" % game_data)
+	countdown.connect("countdown_complete", Callable(self, "_on_countdown_complete"))
+	time_system.connect("race_complete", Callable(self, "_on_race_complete"))
 	load_track(game_data.track)
 	
 ## Initializes the race
@@ -65,6 +71,9 @@ func init_race():
 	# Emits signal for hiding the loading_screen from the Main scene.
 	game_scene_loaded.emit()
 	state = GameState.WAITING_START
+	car.emit_signal("reset_car")
+	time_system.emit_signal("init_time")
+	countdown.emit_signal("start_countdown")
 	print("Game::init_race -> Race initialized, waiting for start")
 	
 
@@ -80,6 +89,16 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"): 
 		print("Game::_process UI Cancel was just pressed")
 		game_scene_exit.emit()	
+
+	if Input.is_action_just_pressed("reset") and state == GameState.FINISH:
+		print("Game::_process Reset was just pressed")
+		state = GameState.INIT_RACE
 	
 	
-	
+func _on_countdown_complete():
+	state = GameState.RACE
+	print("Game::_on_countdown_complete -> State changed to: %s" % state)
+
+func _on_race_complete():
+	state = GameState.FINISH
+	print("Game::_on_race_complete -> State changed to: %s" % state)

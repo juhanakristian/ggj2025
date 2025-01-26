@@ -20,9 +20,12 @@ sky = SubResource("Sky_ywhh3")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Game" type="Node"]
+[node name="Game" type="Node" node_paths=PackedStringArray("car", "time_system", "countdown")]
 script = ExtResource("1_xhe04")
 game_data = ExtResource("2_2bjbc")
+car = NodePath("Car")
+time_system = NodePath("Time")
+countdown = NodePath("Countdown")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)

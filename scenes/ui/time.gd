@@ -6,10 +6,15 @@ extends Control
 @onready var lap3_label: Label = $Lap3Label
 @onready var car = $"../Car"
 
+signal init_time()
+signal race_complete()
+
 var time_running = false
 var time = 0.0
 var lap_times = []
 var max_laps = 3
+
+var best_time = 0.0
 
 func start_time():
 	if !time_running:
@@ -19,7 +24,11 @@ func start_time():
 func stop_time():
 	time_running = false
 
-func reset_time():
+func _on_init():
+	reset_lap_time()
+	lap_times = []
+
+func reset_lap_time():
 	time = 0.0
 	label.text = "00:00"
 	lap1_label.text = ""
@@ -28,6 +37,9 @@ func reset_time():
 
 func record_lap_time():
 	if time_running:
+		if time < best_time or best_time == 0.0:
+			best_time = time
+
 		var formatted_time = format_time(time)
 		lap_times.append(formatted_time)
 
@@ -39,8 +51,9 @@ func format_time(ftime: float) -> String:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	reset_time()
+	connect("init_time", Callable(self, "_on_init"))
 	car.connect("lap_completed", Callable(self, "_on_lap_completed"))
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -54,8 +67,10 @@ func _process(delta: float) -> void:
 
 func _on_lap_completed() -> void:
 	record_lap_time()
-	reset_time()
+	reset_lap_time()
 
+	# final lap completed
 	if lap_times.size() >= max_laps:
 		stop_time()
 		car.emit_signal("toggle_controls", false)
+		emit_signal("race_complete")
