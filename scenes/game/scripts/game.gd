@@ -62,9 +62,10 @@ func process_track_loading():
 
 func _ready():
 	print("Game::_ready -> Starting load_track: %s" % game_data)
-	countdown.connect("countdown_complete", Callable(self, "_on_countdown_complete"))
+	#countdown.connect("countdown_complete", Callable(self, "_on_countdown_complete"))
 	countdown.countdown_complete.connect(_on_countdown_complete)
-	time_system.connect("race_complete", Callable(self, "_on_race_complete"))
+	time_system.race_complete.connect(_on_race_complete)
+	# time_system.connect("race_complete", Callable(self, "_on_race_complete"))
 	load_track(game_data.track)
 	
 ## Initializes the race
