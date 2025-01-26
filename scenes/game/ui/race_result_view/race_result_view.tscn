@@ -1,0 +1,137 @@
+[gd_scene load_steps=5 format=3 uid="uid://31gfufakx1vp"]
+
+[ext_resource type="Script" path="res://scenes/game/ui/race_result_view/race_result_view.gd" id="1_0qlnm"]
+[ext_resource type="Texture2D" uid="uid://58hwhqqxg8tg" path="res://scenes/menu/assets/ui_logo_text.png" id="1_rlxd1"]
+[ext_resource type="FontFile" uid="uid://dt2eeshqeioa7" path="res://scenes/menu/assets/DBack2.otf" id="3_no8l8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odlji"]
+bg_color = Color(0.784314, 0.215686, 0.215686, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.670588, 0.643137, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="RaceResultView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0qlnm")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(512, 460.62)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_odlji")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("1_rlxd1")
+expand_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_right = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PrevTitleLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.670588, 0.643137, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_no8l8")
+theme_override_font_sizes/font_size = 46
+text = "Previous best lap"
+horizontal_alignment = 1
+
+[node name="PrevTimeLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_no8l8")
+theme_override_font_sizes/font_size = 46
+text = "N.a"
+horizontal_alignment = 1
+
+[node name="BestTitleLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.670588, 0.643137, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_no8l8")
+theme_override_font_sizes/font_size = 46
+text = "All time best Lap"
+horizontal_alignment = 1
+
+[node name="BestTimeLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_no8l8")
+theme_override_font_sizes/font_size = 46
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 7.61)
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ExitToMenuButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.886262, 0.886261, 0.886262, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 0.670588, 0.643137, 1)
+theme_override_fonts/font = ExtResource("3_no8l8")
+theme_override_font_sizes/font_size = 28
+text = "exit to menu"
+
+[node name="Spacer" type="Control" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(12.91, 0)
+layout_mode = 2
+
+[node name="StartRaceButton" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 0.670588, 0.643137, 1)
+theme_override_fonts/font = ExtResource("3_no8l8")
+theme_override_font_sizes/font_size = 28
+text = "Start racing"
+
+[node name="TipTextLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.670588, 0.643137, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_no8l8")
+theme_override_font_sizes/font_size = 22
+text = "tip. you can restart  by pressing   r"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons/ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer/VBoxContainer/Buttons/StartRaceButton" to="." method="_on_start_race_button_pressed"]
