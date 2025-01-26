@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://b43l1c2g1pfx3"]
+[gd_scene load_steps=9 format=4 uid="uid://b43l1c2g1pfx3"]
 
 [ext_resource type="Script" path="res://scenes/game/scripts/track_scene.gd" id="1_psb11"]
 [ext_resource type="Texture2D" uid="uid://cimhldv1fuclh" path="res://scenes/menu/assets/menu_terrain_ground_tiles.png" id="2_t4bmg"]
+[ext_resource type="PackedScene" uid="uid://bn6m3iaq4frlv" path="res://scenes/tracks/assets/env_assets/coral.tscn" id="3_i12jl"]
+[ext_resource type="Texture2D" uid="uid://daj3adsfbyfdh" path="res://scenes/tracks/assets/env_assets/env_assets_v0_seaweed_a.png" id="4_21k0s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4ams"]
 resource_name = "GroundTileMaterial"
@@ -58,3 +60,11 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="menu_terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 shape = SubResource("ConcavePolygonShape3D_fbf3h")
+
+[node name="coral" parent="." instance=ExtResource("3_i12jl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.59808, -4.97355, 1.22064)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.7833, 0)
+billboard = 2
+texture = ExtResource("4_21k0s")

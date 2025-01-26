@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://d02p4vroyqr3w"]
+[gd_scene load_steps=3 format=3 uid="uid://d02p4vroyqr3w"]
 
 [ext_resource type="Script" path="res://scenes/main/scripts/main.gd" id="1_ssxvq"]
+[ext_resource type="PackedScene" uid="uid://cu3c1e8j553uo" path="res://scenes/main/music_player/music_player.tscn" id="2_rwpk7"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ssxvq")
+
+[node name="MusicPlayer" parent="." instance=ExtResource("2_rwpk7")]
