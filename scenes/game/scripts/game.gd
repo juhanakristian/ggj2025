@@ -77,7 +77,6 @@ func init_race():
 	car.emit_signal("reset_car")
 	car.controls_enabled = false
 	time_system.emit_signal("init_time")
-	countdown.emit_signal("start_countdown")
 	countdown.start_countdown()
 	race_result_view.visible = false
 	print("Game::init_race -> Race initialized, waiting for start")

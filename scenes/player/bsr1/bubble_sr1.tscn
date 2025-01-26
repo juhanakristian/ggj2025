@@ -64,12 +64,11 @@ gravity = Vector3(0, 2, 0)
 scale_min = 0.1
 scale_max = 3.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwwm8"]
-albedo_color = Color(0.133196, 0.133196, 0.133196, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jop8o"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_men4p"]
-material = SubResource("StandardMaterial3D_mwwm8")
-size = Vector3(0.1, 0.1, 0.1)
+[sub_resource type="BoxMesh" id="BoxMesh_so0vi"]
+material = SubResource("StandardMaterial3D_jop8o")
+size = Vector3(0.145, 0.145, 0.145)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_y8flv"]
 _surfaces = [{
@@ -272,10 +271,9 @@ skeleton = NodePath("")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="CarMesh/suv/Body"]
 transform = Transform3D(-1, -8.43239e-08, -2.307e-08, 0, -0.26389, 0.964553, -8.74228e-08, 0.964553, 0.26389, 0.257403, 0.239409, -1.50537)
-amount = 5
 amount_ratio = 0.984
 process_material = SubResource("ParticleProcessMaterial_0y1lp")
-draw_pass_1 = SubResource("BoxMesh_men4p")
+draw_pass_1 = SubResource("BoxMesh_so0vi")
 
 [node name="wheel_right" type="MeshInstance3D" parent="CarMesh/suv"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.533852, 0.183055, 0.544098)
