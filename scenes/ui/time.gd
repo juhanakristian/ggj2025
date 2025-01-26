@@ -28,6 +28,7 @@ func stop_time():
 func _on_init():
 	reset_lap_time()
 	lap_times = []
+	best_lap_time = 0.0
 
 func reset_lap_time():
 	time = 0.0
