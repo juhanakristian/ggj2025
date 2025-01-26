@@ -5,6 +5,8 @@ signal lap_completed()
 
 signal toggle_controls(enabled: bool)
 
+signal reset_car()
+
 var checkpoint_id = 0
 var next_checkpoint = 1
 var total_checkpoints = 4
@@ -28,6 +30,7 @@ var controls_enabled = false
 func _ready() -> void:
 	connect("checkpoint_entered", Callable(self, "_on_checkpoint_entered"))
 	connect("toggle_controls", Callable(self, "_on_toggle_controls"))
+	connect("reset_car", Callable(self, "_on_reset_car"))
 
 func _physics_process(_delta: float) -> void:
 	car_mesh.position = position + sphere_offset
@@ -82,3 +85,12 @@ func _on_checkpoint_entered(checkpoint_id: int) -> void:
 
 func _on_toggle_controls(enabled: bool) -> void:
 	controls_enabled = enabled
+
+
+func _on_reset_car() -> void:
+	position = Vector3(0, 1, 0)
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	body_mesh.rotation = Vector3(0, deg_to_rad(-180), 0)
+	car_mesh.global_transform.basis = Basis.IDENTITY
+	next_checkpoint = 1
