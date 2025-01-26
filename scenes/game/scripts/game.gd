@@ -109,8 +109,8 @@ func _on_race_complete():
 	state = GameState.FINISH
 	print("Game::_on_race_complete -> State changed to: %s" % state)
 	race_result_view.visible = true
-	race_result_view.set_best_time(22.0)
-	race_result_view.set_prev_time(12.0)
+	race_result_view.set_best_time(time_system.best_time)
+	race_result_view.set_prev_time(time_system.best_lap_time)
 
 ## Player wants to race again
 func _on_race_result_view_player_start_race() -> void:

@@ -15,6 +15,7 @@ var lap_times = []
 var max_laps = 3
 
 var best_time = 0.0
+var best_lap_time = 0.0
 
 func start_time():
 	if !time_running:
@@ -39,6 +40,9 @@ func record_lap_time():
 	if time_running:
 		if time < best_time or best_time == 0.0:
 			best_time = time
+
+		if time < best_lap_time or best_lap_time == 0.0:
+			best_lap_time = time
 
 		var formatted_time = format_time(time)
 		lap_times.append(formatted_time)
