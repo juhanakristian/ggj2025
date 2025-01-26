@@ -10,6 +10,7 @@ extends Control
 signal start_countdown()
 signal countdown_complete()
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	car.controls_enabled = false
@@ -34,7 +35,9 @@ func _process(_delta: float) -> void:
 		text = "GO!"
 		car.controls_enabled = true
 		time.start_time()
-		emit_signal("countdown_ended")
+		
+		# Disabled ( Signal does not exist, and called always when race is on?)
+		#emit_signal("countdown_ended")
 
 	label.visible = true
 	label.text = text
