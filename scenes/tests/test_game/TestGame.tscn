@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://funx8u4segcp" path="res://scenes/game/game.tscn" id="1_gxs6b"]
 [ext_resource type="Script" path="res://scenes/game/scripts/game_data.gd" id="2_wyd60"]
-[ext_resource type="Resource" uid="uid://brqym4a6arbi5" path="res://scenes/tracks/dbg_track/dbg_track.tres" id="3_h2qwl"]
+[ext_resource type="Resource" uid="uid://byalhnoflip6a" path="res://scenes/tracks/finaltrack/finaltrack.tres" id="3_74y4o"]
 
 [sub_resource type="Resource" id="Resource_3qygv"]
 script = ExtResource("2_wyd60")
-track = ExtResource("3_h2qwl")
+track = ExtResource("3_74y4o")
 
 [node name="TestGame" type="Node"]
 
