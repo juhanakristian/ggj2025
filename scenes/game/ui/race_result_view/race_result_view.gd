@@ -33,7 +33,9 @@ func set_prev_time(ftime : float):
 	prev_time_label.text = format_time(ftime)
 	
 func _on_exit_to_menu_button_pressed() -> void:
+	print("RaceResultView::_on_exit_to_menu_button_pressed")
 	player_exit_to_menu.emit()
 
 func _on_start_race_button_pressed() -> void:
+	print("RaceResultView::_on_race_button_pressed")
 	player_start_race.emit()
