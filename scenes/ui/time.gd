@@ -1,4 +1,4 @@
-extends Control
+class_name TimeSystem extends Control
 
 @onready var label: Label = $Label
 @onready var lap1_label: Label = $Lap1Label

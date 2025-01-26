@@ -1,4 +1,4 @@
-extends Control
+class_name CountDown extends Control
 
 @onready var label: Label = $Label
 @onready var timer: Timer = $Timer
@@ -7,17 +7,15 @@ extends Control
 
 @export var game: Node
 
-signal start_countdown()
+#signal start_countdown()
 signal countdown_complete()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	car.controls_enabled = false
+	#car.controls_enabled = false
 
-	connect("start_countdown", Callable(self, "_start_countdown"))
-
-	timer.connect("timeout", Callable(self, "_on_timeout"))
+	timer.timeout.connect(_on_timeout)
 	timer.start()
 
 
@@ -44,6 +42,7 @@ func _process(_delta: float) -> void:
 
 func _on_timeout():
 	label.visible = false
+	
 
-func _start_countdown():
+func start_countdown():
 	timer.start()

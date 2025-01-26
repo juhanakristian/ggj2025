@@ -17,8 +17,9 @@ var track_loading_progress = [0.0]
 var state : GameState = GameState.INIT
 
 @export var car : Node
-@export var time_system : Node
-@export var countdown : Node
+@export var time_system : TimeSystem
+@export var countdown : CountDown
+@onready var race_result_view: RaceResultView = $RaceResultView
 
 ## Starts loading the track
 func load_track(track : Track):
@@ -62,6 +63,7 @@ func process_track_loading():
 func _ready():
 	print("Game::_ready -> Starting load_track: %s" % game_data)
 	countdown.connect("countdown_complete", Callable(self, "_on_countdown_complete"))
+	countdown.countdown_complete.connect(_on_countdown_complete)
 	time_system.connect("race_complete", Callable(self, "_on_race_complete"))
 	load_track(game_data.track)
 	
@@ -72,8 +74,11 @@ func init_race():
 	game_scene_loaded.emit()
 	state = GameState.WAITING_START
 	car.emit_signal("reset_car")
+	car.controls_enabled = false
 	time_system.emit_signal("init_time")
 	countdown.emit_signal("start_countdown")
+	countdown.start_countdown()
+	race_result_view.visible = false
 	print("Game::init_race -> Race initialized, waiting for start")
 	
 
@@ -90,9 +95,10 @@ func _process(_delta: float) -> void:
 		print("Game::_process UI Cancel was just pressed")
 		game_scene_exit.emit()	
 
-	if Input.is_action_just_pressed("reset") and state == GameState.FINISH:
-		print("Game::_process Reset was just pressed")
-		state = GameState.INIT_RACE
+	# Logic before RaceResultView
+	#if Input.is_action_just_pressed("reset") and state == GameState.FINISH:
+	#	print("Game::_process Reset was just pressed")
+	#	state = GameState.INIT_RACE
 	
 	
 func _on_countdown_complete():
@@ -102,3 +108,14 @@ func _on_countdown_complete():
 func _on_race_complete():
 	state = GameState.FINISH
 	print("Game::_on_race_complete -> State changed to: %s" % state)
+	race_result_view.visible = true
+	race_result_view.set_best_time(22.0)
+	race_result_view.set_prev_time(12.0)
+
+## Player wants to race again
+func _on_race_result_view_player_start_race() -> void:
+	state = GameState.INIT_RACE
+
+
+func _on_race_result_view_player_exit_to_menu() -> void:
+	game_scene_exit.emit()	
